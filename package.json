@@ -28,7 +28,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=10.16"
+    "node": ">=18"
   },
   "preferGlobal": true,
   "scripts": {
@@ -47,8 +47,6 @@
     "chalk": "^4.1.2",
     "commander": "^7.2.0",
     "fs-extra": "^9.1.0",
-    "node-fetch": "^2.7.0",
-    "node-releases": "^2.0.18",
     "ora": "^5.4.1",
     "semver": "^7.6.3"
   },
@@ -57,7 +55,6 @@
     "@antfu/utils": "^0.5.2",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.19.54",
-    "@types/node-fetch": "^2.6.11",
     "@types/semver": "^7.5.8",
     "@types/yarnpkg__lockfile": "^1.1.9",
     "bumpp": "^8.2.1",
