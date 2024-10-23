@@ -4,6 +4,7 @@ import process from 'node:process'
 import fs from 'fs-extra'
 import { version } from '../../package.json'
 import { openaiModels, rcPath } from '../shared'
+import { error } from '../utils/console'
 import { get, set, unset } from '../utils/object'
 
 export default function configure(options: ConfigOption) {
@@ -25,7 +26,7 @@ export default function configure(options: ConfigOption) {
     const [path, value] = options.set
 
     if (path === 'openaiModel' && !openaiModels.includes(value)) {
-      console.error(`error: option '--openaiModel <value>' argument '${value}' is invalid. Allowed choices are ${openaiModels.join(', ')}.`)
+      error(`error: option '--openaiModel <value>' argument '${value}' is invalid. Allowed choices are ${openaiModels.join(', ')}.`)
       process.exit(1)
     }
 

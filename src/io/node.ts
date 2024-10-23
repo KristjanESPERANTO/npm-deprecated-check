@@ -1,7 +1,6 @@
-/* eslint-disable no-console */
 import process from 'node:process'
-import chalk from 'chalk'
 import nodeReleases from 'node-releases/data/release-schedule/release-schedule.json'
+import { ok, warn } from '../utils/console'
 
 function getLatestNodeVersion() {
   const versions = Object.keys(nodeReleases)
@@ -26,20 +25,20 @@ function checkNode() {
     const currentDate = new Date()
     const isNodeVersionSupported = currentDate < endDate
     if (isNodeVersionSupported) {
-      console.log(chalk.green(`Your node version (${nodeVersion}) is supported until ${nodeVersionData.end}.`))
+      ok(`Your node version (${nodeVersion}) is supported until ${nodeVersionData.end}.`)
       result = true
     }
     else {
-      console.log(chalk.yellow(`Your node version (${nodeVersion}) is no longer supported since ${nodeVersionData.end}.`))
+      warn(`Your node version (${nodeVersion}) is no longer supported since ${nodeVersionData.end}.`)
       result = false
     }
   }
   else if (nodeVersion > getLatestNodeVersion()) {
-    console.log(chalk.green(`Your node version (${nodeVersion}) is higher than the latest version ${getLatestNodeVersion()}.`))
+    ok(`Your node version (${nodeVersion}) is higher than the latest version ${getLatestNodeVersion()}.`)
     result = true
   }
   else {
-    console.log(chalk.yellow(`Your node version (${nodeVersion}) can't be found in the release schedule.`))
+    warn(`Your node version (${nodeVersion}) can't be found in the release schedule.`)
     result = false
   }
   return result
